@@ -27,6 +27,7 @@ public class DrinkCategoryActivity extends Activity {
                 //Передача напитка, выбранного пользователем
                 Intent intent = new Intent(DrinkCategoryActivity.this, DrinkActivity.class);
                 intent.putExtra(DrinkActivity.EXTRA_DRINKID, (int) id);
+                System.out.println(id);
                 startActivity(intent);
             }
         };

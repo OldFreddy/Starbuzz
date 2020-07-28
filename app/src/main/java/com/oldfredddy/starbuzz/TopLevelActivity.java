@@ -57,7 +57,7 @@ public class TopLevelActivity extends Activity {
             favoriteCursor = db.query("DRINK",
                     new String[]{"_id", "NAME"},
                     "FAVORITE = 1",
-                   null, null, null, null);
+                    null, null, null, null);
 
             CursorAdapter favoriteAdapter = new SimpleCursorAdapter(this,
                     android.R.layout.simple_list_item_1,
@@ -78,6 +78,21 @@ public class TopLevelActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    //Подмена курсора при повторном возвращении к активности
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Cursor newCursor = db.query("DRINK",
+                new String[]{"_id", "NAME"},
+                "FAVORITE = 1",
+                null, null, null, null);
+        ListView listFavorites = findViewById(R.id.list_favorites);
+        CursorAdapter adapter = (CursorAdapter) listFavorites.getAdapter();
+        adapter.changeCursor(newCursor);
+        favoriteCursor = newCursor;
+
     }
 
     //Закрытие курсора и базы в методе omDestroy()

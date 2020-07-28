@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DrinkActivity extends Activity {
+
+    
     public static final String EXTRA_DRINKID = "drinkId";
 
     @Override
@@ -75,6 +77,7 @@ public class DrinkActivity extends Activity {
 
 
     }
+
 
     //Обновление базы данных по щелчку на флажке
     public void onFavoriteClicked (View view) {
